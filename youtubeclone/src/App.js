@@ -1,9 +1,10 @@
 import './App.css';
+import LoginScreen from './Screen/LoginScreen/LoginScreen';
 
 function App() {
   return (
    <>
-    <h1>Hiis</h1>
+    <LoginScreen />
    </>
   );
 }

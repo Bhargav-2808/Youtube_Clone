@@ -1,0 +1,52 @@
+.loginCard{
+    width: 25rem;
+    background-color: rgba(53, 53, 53, 0.644);
+    color: whitesmoke;
+    border-radius: 3%;
+    // height: auto;
+    
+    .cardBody{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .yIcon{
+        font-size: 12rem;
+        color:whitesmoke;
+        padding-bottom: 0%;
+    }
+
+    .title{
+        font-size: 3rem;
+        font-weight: 350;
+        
+        span{
+            color: red;
+        }
+    }
+
+    .cardText{
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+}
+
+.loginCard:hover{
+    cursor: pointer;
+    box-shadow:1px 1px 8px rgba(221, 221, 221, 0.281);
+}
+
+.loginBtn:hover{
+    background-color: red;
+    border-color: red;
+    color: whitesmoke;
+}
+
+@media screen and (min-width: 320px) and (max-width: 760px){
+    .loginCard{
+        width: 18rem;
+    }
+}
