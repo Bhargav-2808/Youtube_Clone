@@ -6,10 +6,12 @@ import WatchLaterOutlinedIcon from "@mui/icons-material/WatchLaterOutlined";
 import VideoLibraryOutlinedIcon from "@mui/icons-material/VideoLibraryOutlined";
 import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined";
 
-export const Sidebar = () => {
+export const Sidebar = ({ sidebar, handleToggleSidebar }) => {
   return (
     <>
-      <nav className="sidebar">
+      <nav className={sidebar ? 'sidebar open' : 'sidebar'}
+      onClick={() => handleToggleSidebar(false)}
+      >
         <li>
           <HomeIcon />
           <span>Home</span>

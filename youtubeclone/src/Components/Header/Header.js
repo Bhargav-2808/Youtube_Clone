@@ -33,14 +33,14 @@ export const Header = ({ handleToggleSidebar })=> {
             </button>
          </form>
 
-         <dic className="header__icons">
+         <div className="header__icons">
             <NotificationsIcon />
             <AppsIcon  />
             <img
                src="https://www.pngkey.com/png/full/114-1149878_setting-user-avatar-in-specific-size-without-breaking.png"
                alt="avatar"
             />
-         </dic>
+         </div>
       </div>
         </>
     )

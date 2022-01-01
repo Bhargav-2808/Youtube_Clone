@@ -9,12 +9,14 @@ function App() {
   const handleToggleSidebar = () => toggleSidebar(value => !value)
   return (
     <>
-      <div className="app_">
       <Header handleToggleSidebar={handleToggleSidebar} />
-      
-      {/* <LoginScreen /> */}
-      <Sidebar sidebar={sidebar} handleToggleSidebar={handleToggleSidebar} />
-      </div>
+         <div className='app_'>
+            <Sidebar
+               sidebar={sidebar}
+               handleToggleSidebar={handleToggleSidebar}
+            />
+           
+         </div>
     </>
   );
 }
