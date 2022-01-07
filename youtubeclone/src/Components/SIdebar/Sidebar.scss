@@ -8,42 +8,29 @@
 
    width: 250px;
    height: 90vh;
-   padding-top: 2rem;
+   padding-top: 0.8rem;
    transition: transform 0.2s ease-in;
 
-   position: sticky;
-   top: 10vh;
-   left: 0;
-
-   a {
-      color: $text-color;
-      &:hover {
-         color: $text-color;
-         text-decoration: none;
-      }
-   }
-
-   li {
+   li{
       display: flex;
       align-items: center;
-
-      padding: 0.6rem 1.5rem;
-      margin: 0.2rem 0;
+      padding: 0.5rem 1.5rem;
+      margin: 0.12rem 0;
       cursor: pointer;
 
-      span {
+      span{
          margin-left: 1rem;
          font-size: 14px;
          font-weight: 500;
          letter-spacing: 0.4px;
       }
-
-      &:hover {
+      &:hover{
          background-color: $border-color;
       }
    }
 
-   hr {
+   
+   hr{
       background-color: $border-color;
    }
 
@@ -52,22 +39,28 @@
    }
 }
 
-@media (max-width: $breakpoint-medium) {
-   .sidebar {
-      width: 80px;
-      li {
-         justify-content: center;
+
+@media (max-width:$breakpoint-medium) {
+   .sidebar{
+      width: 90px;
+      
+      li{
+         justify-self: center ;
       }
-      span {
+      span{
+         
          display: none;
       }
    }
+   
 }
-@media (max-width: $breakpoint-small) {
-   .sidebar {
+
+@media (max-width:$breakpoint-small) {
+   .sidebar{
       transform: translateX(-100%);
 
       position: fixed;
       z-index: 999;
    }
+   
 }
