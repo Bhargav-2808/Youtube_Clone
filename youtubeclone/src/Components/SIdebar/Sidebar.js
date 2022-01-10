@@ -14,35 +14,35 @@ export const Sidebar = ({ sidebar, handleToggleSidebar }) => {
       onClick={() => handleToggleSidebar(false)}
       >
         <li>
-          <Link to="/">
-          <HomeIcon />
+          <Link to="/" >
+          <HomeIcon className="icon"/>
           <span>Home</span>
           </Link>
         </li>
         <li>
-          <Link to="/subscription">
-          <SubscriptionsIcon /> <span>Subscriptions</span>
+          <Link to="/subscription" >
+          <SubscriptionsIcon className="icon"/> <span>Subscriptions</span>
           </Link>
         </li>
         <li>
-          <Link to="/liked">
-          <ThumbUpAltIcon /> <span>Liked Video</span>
+          <Link to="/liked" >
+          <ThumbUpAltIcon className="icon"/> <span>Liked Video</span>
           </Link>
         </li>
         <li>
-          <Link to="/history">
-          <WatchLaterOutlinedIcon /> <span>History</span>
+          <Link to="/history" >
+          <WatchLaterOutlinedIcon className="icon"/> <span>History</span>
           </Link>
         </li>
         <li>
-          <Link to="/library">
-          <VideoLibraryOutlinedIcon /> <span>Library</span>
+          <Link to="/library" >
+          <VideoLibraryOutlinedIcon className="icon" /> <span>Library</span>
           </Link>
         </li>
         <hr />
         <li>
-          <Link to="/login">
-          <LogoutOutlinedIcon /> <span>Log Out</span>
+          <Link to="/login" >
+          <LogoutOutlinedIcon className="icon"/> <span>Log Out</span>
           </Link>
         </li>
         <hr />
