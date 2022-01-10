@@ -35,54 +35,6 @@ function App() {
   );
 }
 
-// const App = () => {
-//   return (
-//     <>
-//       {/* <Layout/> */}
-//       <Routes>
-//         <Route exact path="/" element={<Layout />} />
-//         <Route exact path="/login" element={<LoginScreen />} />
-//       </Routes>
-//     </>
-//   );
-// };
+
 export default App;
 
-{
-  /* <Route path='/' exact >
-           <Layout>
-           <Home />
-           </Layout>
-        </Route>
-        
-        <Route path='/login'>
-        <LoginScreen />
-        </Route>
-        
-        <Route path='/like'>
-        <Liked />
-        </Route>
-        
-        <Route path='/history'>
-        <Layout>
-        <History />
-        </Layout>
-        </Route>
-        
-        <Route path='/library'>
-        <Layout>
-              <Library/>
-           </Layout>
-           </Route>
-
-           <Route path='subscriptions'>
-           <Layout>
-           <Subscription />
-           </Layout>
-        </Route>
-        
-        
-        <Route>
-        <Redirect to='/' />
-      </Route> */
-}
