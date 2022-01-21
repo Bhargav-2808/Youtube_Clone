@@ -1,8 +1,8 @@
 import app from "../../firebase";
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
-import { LoadProfile, LoginFailed, LoginRequest, LoginSuccess } from "../actionTypes";
+import { LoadProfile, LoginFailed, LoginRequest, LoginSuccess, LogOut } from "../actionTypes";
 
-export const login = () => dispatch => {
+export const login = () => async dispatch => {
     try {
 
         dispatch({
@@ -11,7 +11,7 @@ export const login = () => dispatch => {
 
         const provider = new GoogleAuthProvider();
         const auth = getAuth(app);
-        signInWithPopup(auth, provider)
+        await signInWithPopup(auth, provider)
             .then((result) => {
                 const credential = GoogleAuthProvider.credentialFromResult(result);
                 const token = credential.accessToken;
@@ -21,6 +21,10 @@ export const login = () => dispatch => {
                     imgUrl:user.photoURL
                 }
                 
+                sessionStorage.setItem("yt-token",token);
+                sessionStorage.setItem("yt-profile",JSON.stringify(profile));
+                
+
                 dispatch({
                     type:LoginSuccess,
                     payLoad:token
@@ -47,5 +51,19 @@ export const login = () => dispatch => {
     } catch (error) {
 
     }
+}
+
+export const log_out = () => async dispatch => {
+    const auth = getAuth(app);
+    
+    await auth.signOut()
+    dispatch({
+       type: LogOut,
+    })
+ 
+    sessionStorage.removeItem('yt-token')
+
+    
+    sessionStorage.removeItem('yt-profile')
 }
 

@@ -6,8 +6,15 @@ import WatchLaterOutlinedIcon from "@mui/icons-material/WatchLaterOutlined";
 import VideoLibraryOutlinedIcon from "@mui/icons-material/VideoLibraryOutlined";
 import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined";
 import { Link } from 'react-router-dom'
+import { useDispatch } from "react-redux";
+import { log_out } from "../../redux/actions/authAction";
 
 export const Sidebar = ({ sidebar, handleToggleSidebar }) => {
+
+  const dispatch = useDispatch()
+  const LoHandler =()=>{
+    dispatch(log_out())
+  }
   return (
     <>
       <nav className={sidebar ? 'sidebar open' : 'sidebar'}
@@ -40,7 +47,7 @@ export const Sidebar = ({ sidebar, handleToggleSidebar }) => {
           </Link>
         </li>
         <hr />
-        <li>
+        <li onClick={LoHandler}>
           <Link to="/login" >
           <LogoutOutlinedIcon className="icon"/> <span>Log Out</span>
           </Link>
