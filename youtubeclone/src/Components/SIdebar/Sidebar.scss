@@ -11,8 +11,9 @@
    height: 90vh;
    padding-top: 0.8rem;
    transition: transform 0.2s ease-in;
-  // position: fixed;
-   z-index: 990;
+   position: sticky;
+   left: 0;
+   //z-index: 990;
 
    li{
       display: flex;

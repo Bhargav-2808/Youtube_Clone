@@ -3,7 +3,7 @@
 .video {
    margin-bottom: 1rem;
    padding: 0.7rem;
- 
+  
    font-weight: 500;
    font-size: 0.9rem;
 
@@ -12,10 +12,14 @@
    &__top {
       margin-bottom: 0.5rem;
       position: relative;
+      
+      .lazy-load-image-background {
+         width: 100%;
+      }
       img {
          width: 100%;
       }
-      span {
+      &__duration {
          position: absolute;
 
          bottom: 0.3rem;

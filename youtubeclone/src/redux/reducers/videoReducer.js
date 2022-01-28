@@ -16,7 +16,7 @@ const {type, payload} = action;
         }
         case HomeVSucess: return{
             ...prestate,
-            videos:payload.videos,
+            videos:[...prestate.videos, ...payload.videos],
             loading:false,
             nextPageToken:payload.nextPageToken
         }

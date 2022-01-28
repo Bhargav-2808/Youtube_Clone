@@ -2,7 +2,7 @@
 import request from "../../api"
 import { HomeVRequest,HomeVSucess ,HomeVFail} from "../actionTypes"
 
-export const getPopVideos = () => async dispatch =>{
+export const getPopVideos = () => async (dispatch,getState) =>{
     try {
         dispatch({
             type:HomeVRequest,
@@ -12,7 +12,7 @@ export const getPopVideos = () => async dispatch =>{
             params:{
                 part:"snippet,contentDetails,statistics",
                 chart:"mostPopular",
-                pageToken: "",
+                pageToken: getState().homevideos.nextPageToken,
                 regionCode:"IN",
                 maxResults:20
             },
