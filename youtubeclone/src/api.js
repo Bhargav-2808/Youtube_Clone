@@ -2,13 +2,14 @@ import axios from 'axios'
 
 
 const request = axios.create(
+   
     {
-        URL : "https://youtube.googleapis.com/youtube/v3/",
+        baseURL : "https://youtube.googleapis.com/youtube/v3/",
         params :{
-         key:process.env.REACT_APP_API_KEY,   
+         key:"AIzaSyBIPkCs93I1ueLXg7RPZr_Y_rrvP4MgQK0",   
         }
-
     }
-)
+    )
+    
 
 export default request;

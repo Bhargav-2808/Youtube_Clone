@@ -1,5 +1,6 @@
+
 import request from "../../api"
-import { HomeVRequest } from "../actionTypes"
+import { HomeVRequest,HomeVSucess ,HomeVFail} from "../actionTypes"
 
 export const getPopVideos = () => async dispatch =>{
     try {
@@ -7,7 +8,7 @@ export const getPopVideos = () => async dispatch =>{
             type:HomeVRequest,
         })
 
-        const respnse = request.get("/videos",{
+        const response = await request.get("/videos",{
             params:{
                 part:"snippet,contentDetails,statistics",
                 chart:"mostPopular",
@@ -16,8 +17,24 @@ export const getPopVideos = () => async dispatch =>{
                 maxResults:20
             },
         })
-        console.log(respnse)
+        const {data} = response;
+        //console.log(response);
+        //console.log(data);
+        
+        dispatch({
+            type:HomeVSucess,
+            payload:{
+                videos:data.items,
+                nextPageToken:data.nextPageToken,
+            }
+        })
     } catch (error) {
+        console.log(error.message);
+
+        dispatch({
+            type:HomeVFail,
+            payload:error.message
+        })
         
     }
 }
