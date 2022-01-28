@@ -8,7 +8,7 @@ import Library from "./Components/Librarys/Library";
 import Subscription from "./Components/Subscription/Subscription";
 import History from "./Components/History/History";
 import Liked from "./Components/Liked/Liked";
-import Home from "./Components/Homes/Home";
+import HomeScreen from "./Screen/HomeScreen/HomeScreen";
 import { useSelector } from "react-redux";
 
 function App() {
@@ -34,7 +34,7 @@ function App() {
         <Sidebar sidebar={sidebar} handleToggleSidebar={handleToggleSidebar} />
 
         <Routes>
-          <Route exact path="/" element={<Home />} />
+          <Route exact path="/" element={<HomeScreen/>} />
           <Route exact path="/subscription" element={<Subscription />} />
           <Route exact path="/liked" element={<Liked />} />
           <Route exact path="/history" element={<History />} />

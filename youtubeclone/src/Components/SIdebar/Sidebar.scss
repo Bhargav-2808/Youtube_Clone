@@ -4,12 +4,15 @@
    background: $black-secondary;
 
    display: flex;
+   margin-top: 10vh ;
    flex-direction: column;
-
+  // flex:0.4;
    width: 250px;
    height: 90vh;
    padding-top: 0.8rem;
    transition: transform 0.2s ease-in;
+  // position: fixed;
+   z-index: 990;
 
    li{
       display: flex;
