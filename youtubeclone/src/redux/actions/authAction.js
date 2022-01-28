@@ -10,6 +10,7 @@ export const login = () => async dispatch => {
         })
 
         const provider = new GoogleAuthProvider();
+        provider.addScope("https://www.googleapis.com/auth/youtube.force-ssl");
         const auth = getAuth(app);
         await signInWithPopup(auth, provider)
             .then((result) => {
