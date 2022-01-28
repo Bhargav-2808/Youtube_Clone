@@ -1,36 +1,66 @@
-import { useEffect } from "react";
+import { useEffect,useState } from "react";
 import request from "../../api";
 import "./Videopart.scss";
+import moment from "moment";
+import numeral from "numeral";
+
+
 export const Videopart = ({ video }) => {
   const {
     id,
     snippet: {
       channelId,
+      channelTitle,
       publishedAt,
       localized:{
          title
       },
-      channelTitle,
       thumbnails: { medium },
     },
   } = video;
   
+  const [views, setViews] = useState(null);
+  const [duration, setDuration] = useState(null);
+  const [channelIcon, setchannelIcon] = useState(null);
+
+  const secs=moment.duration(duration).asSeconds()  
+  const _duration=moment.utc(secs*1000).format("mm:ss")
+
  // const _videoId = id?.videoId || id
   useEffect(() => {
     const getVideoDetails = async () => {
       const {
-        data
+        data:{items}
       } = await request("/videos", {
         params: {
           part: "contentDetails,statistics",
           id: id,
         },
       });
-      //console.log(data);
+      setDuration(items[0].contentDetails.duration)
+      setViews(items[0].statistics.viewCount)
     };
 
     getVideoDetails();
   }, [id]);
+
+  useEffect(() => {
+    const getChannelIcon = async () => {
+      const {
+        data:{items}
+      } = await request("/channels", {
+        params: {
+          part: "snippet",
+          id: channelId,
+        },
+      });
+      
+      setchannelIcon(items[0].snippet.thumbnails.default.url)
+      console.log(items);
+    };
+
+    getChannelIcon();
+  }, [channelId]);
 
 
   
@@ -39,21 +69,21 @@ export const Videopart = ({ video }) => {
       <div className="video">
         <div className="video__top">
           <img src={medium.url} alt="" />
-          <span>05:43</span>
+          <span>{_duration}</span>
         </div>
         <div className="video__title">
-          Create app in 5 minutes #made by Chintu
+          {title}
         </div>
         <div className="video__details">
-          <span>5m Views •</span>
-          <span>5 days ago</span>
+          <span>{numeral(views).format('0.a')} Views •</span>
+          <span>{moment(publishedAt).fromNow()}</span>
         </div>
         <div className="video__channel">
           <img
-            src="https://yt3.ggpht.com/a-/AOh14GixdVjxqi11Md_OCDd3K7SOQEhizq4f3EI_0g=s68-c-k-c0x00ffffff-no-rj-mo"
+            src={channelIcon}
             alt=""
           />
-          <p>Rainbow Hat Jr</p>
+          <p>{channelTitle}</p>
         </div>
       </div>
     </>
