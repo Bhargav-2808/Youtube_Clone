@@ -4,8 +4,10 @@ import HorizontalSplitIcon from '@mui/icons-material/HorizontalSplit';
 import SearchIcon from '@mui/icons-material/Search';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import AppsIcon from '@mui/icons-material/Apps';
+import { useSelector } from 'react-redux';
 
 export const Header = ({ handleToggleSidebar })=> {
+    const {user}=useSelector(state=>state.auth);
     const {register ,handleSubmit} = useForm();
     const onSubmit = data => console.log(data);
     
@@ -37,7 +39,7 @@ export const Header = ({ handleToggleSidebar })=> {
             <NotificationsIcon />
             <AppsIcon  />
             <img
-               src="https://www.pngkey.com/png/full/114-1149878_setting-user-avatar-in-specific-size-without-breaking.png"
+               src={user!=null?user.imgUrl:"https://www.pngkey.com/png/full/114-1149878_setting-user-avatar-in-specific-size-without-breaking.png"}
                alt="avatar"
             />
          </div>
