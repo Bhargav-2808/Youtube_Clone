@@ -1,4 +1,5 @@
 import { useEffect,useState } from "react";
+import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 import request from "../../api";
 import "./Videopart.scss";
 import moment from "moment";
@@ -77,7 +78,7 @@ export const Videopart = ({ video }) => {
           {title}
         </div>
         <div className="video__details">
-          <span>{numeral(views).format('0.a')} Views •</span>
+          <span><RemoveRedEyeIcon fontSize="small"/>{numeral(views).format('0.a')} Views •</span>
           <span>{moment(publishedAt).fromNow()}</span>
         </div>
         <div className="video__channel">

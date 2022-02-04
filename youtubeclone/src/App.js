@@ -3,6 +3,7 @@ import react, { useEffect, useState } from "react";
 import { Header } from "./Components/Header/Header";
 import { Sidebar } from "./Components/SIdebar/Sidebar";
 import LoginScreen from "./Screen/LoginScreen/LoginScreen";
+import WatchScreen from "./Screen/WatchScreen/WatchScreen";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import Library from "./Components/Librarys/Library";
 import Subscription from "./Components/Subscription/Subscription";
@@ -39,6 +40,7 @@ function App() {
           <Route exact path="/liked" element={<Liked />} />
           <Route exact path="/history" element={<History />} />
           <Route exact path="/library" element={<Library />} />
+          <Route exact path="/watch" element={<WatchScreen />} />
         </Routes>
       </div>
     </>
