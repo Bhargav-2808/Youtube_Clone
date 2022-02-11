@@ -40,7 +40,7 @@ function App() {
           <Route exact path="/liked" element={<Liked />} />
           <Route exact path="/history" element={<History />} />
           <Route exact path="/library" element={<Library />} />
-          <Route exact path="/watch" element={<WatchScreen />} />
+          <Route exact path="/watch/:id" element={<WatchScreen />} />
         </Routes>
       </div>
     </>

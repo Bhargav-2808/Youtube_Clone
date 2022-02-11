@@ -1,6 +1,6 @@
 
 import request from "../../api"
-import { HomeVRequest,HomeVSucess ,HomeVFail} from "../actionTypes"
+import { HomeVRequest,HomeVSucess ,HomeVFail, SeletedVRequest, SeletedVSuccess, SeletedVFail} from "../actionTypes"
 
 export const getPopVideos = () => async (dispatch,getState) =>{
     try {
@@ -36,5 +36,34 @@ export const getPopVideos = () => async (dispatch,getState) =>{
             payload:error.message
         })
         
+    }
+}
+
+export const getVideoByID = (id) => async (dispatch)=>{
+    try {
+        dispatch({
+            type:SeletedVRequest,
+        })
+
+        const {data} =await request('/videos',{
+            params:{
+                part:"snippet,statistics",
+                id:id,
+            }
+        })
+
+        dispatch({
+            type:SeletedVSuccess,
+            payload:data.items[0],
+        })
+
+        
+    } 
+    catch(error) {
+        console.log(error.message);
+        dispatch({
+            type:SeletedVFail,
+            payload:error.message,
+        })
     }
 }

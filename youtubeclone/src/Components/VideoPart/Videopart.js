@@ -5,6 +5,7 @@ import "./Videopart.scss";
 import moment from "moment";
 import numeral from "numeral";
 import { LazyLoadImage } from "react-lazy-load-image-component";
+import { Navigate, useNavigate } from "react-router-dom";
 
 
 export const Videopart = ({ video }) => {
@@ -27,7 +28,7 @@ export const Videopart = ({ video }) => {
 
   const secs=moment.duration(duration).asSeconds()  
   const _duration=moment.utc(secs*1000).format("mm:ss")
-
+  const naviagate = useNavigate();
  // const _videoId = id?.videoId || id
   useEffect(() => {
     const getVideoDetails = async () => {
@@ -65,10 +66,12 @@ export const Videopart = ({ video }) => {
   }, [channelId]);
 
 
-  
+  const handleVideoClick = () =>{
+      naviagate(`/watch/${id}`);
+  }
   return (
     <>
-      <div className="video">
+      <div className="video" onClick={handleVideoClick}>
         <div className="video__top">
          <LazyLoadImage src={medium.url} effect="blur"/>
           {/* <img src={medium.url} alt="" /> */}
