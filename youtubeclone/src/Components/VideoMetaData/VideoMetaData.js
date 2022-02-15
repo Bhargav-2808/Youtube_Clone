@@ -1,18 +1,32 @@
-import React from "react";
+import React, { useEffect } from "react";
 import moment from "moment";
 import numeral from "numeral";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import ThumbDownIcon from "@mui/icons-material/ThumbDown";
 import ReactShowMoreText from "react-show-more-text";
 import "./VideoMetaData.scss";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { getChannelDetails, subscrition } from "../../redux/actions/channel.action";
 
 const VideoMetaData = ({ video: { snippet, statistics }, videoId }) => {
-  const { channelId , channelTitle , description ,title,  publishedAt } = snippet;
-  const {viewCount , likeCount , dislikeCount} = statistics;
+  const { channelId, channelTitle, description, title, publishedAt } = snippet;
+  const { viewCount, likeCount, dislikeCount } = statistics;
   const dispatch = useDispatch();
 
+  const { 
+    snippet: channelSnippet,
+    statistics: channelStatistics,
+  } = useSelector((state) => state.channelDetails.channel);
+  
+  const SubscriptionStatus_ = useSelector(
+    state => state.channelDetails.subscriptionStatus
+ )
+  useEffect(() => {
+    dispatch(getChannelDetails(channelId));
+    dispatch(subscrition(channelId))
+  }, [dispatch, channelId]);
 
+  //console.log(channelStatistics?.subscriberCount);
   return (
     <div className="videoMetaData py-2">
       <div className="videoMetaData__top">
@@ -37,16 +51,20 @@ const VideoMetaData = ({ video: { snippet, statistics }, videoId }) => {
       <div className="videoMetaData__channel d-flex justify-content-between align-items-center my-2 py-3">
         <div className="d-flex">
           <img
-            src="https://www.pngkey.com/png/full/114-1149878_setting-user-avatar-in-specific-size-without-breaking.png"
+            src={channelSnippet?.thumbnails?.default?.url}
             alt=""
-            className="roundedCircle me-3"
+            className="rounded-circle me-3"
           />
           <div className="d-flex flex-column">
             <span>{channelTitle}</span>
-            <span>{numeral().format("0.a")} Subscribers</span>
+            <span>
+              {numeral(channelStatistics?.subscriberCount).format("0.a")} Subscribers
+            </span>
           </div>
         </div>
-        <button className="btn border-0 p-2 m-2">Subscribe</button>
+        <button className={`p-2 m-2 border-0 btn ${
+                  SubscriptionStatus_ && 'btn-gray'
+               }`}>{SubscriptionStatus_?"Subscribed":"Subscribe"}</button>
       </div>
       <div className="videoMetaData__description">
         <ReactShowMoreText

@@ -1,5 +1,5 @@
 import request from "../../api";
-import { ChannelDFail, ChannelDRequet, ChannelDSuccess } from "../actionTypes";
+import { ChannelDFail, ChannelDRequet, ChannelDSuccess, SubscriptionStatus } from "../actionTypes";
 
 export const getChannelDetails = (id) => async (dispatch)=>{
     try {
@@ -27,5 +27,36 @@ export const getChannelDetails = (id) => async (dispatch)=>{
             type:ChannelDFail,
             payload:error.response.data,
         })
+    }
+}
+
+
+export const subscrition = (id) => async (dispatch,getState) =>{
+    try {
+     
+
+        const {data} =await request('/subscriptions',{
+            params:{
+                part:"snippet",
+                forChannelId:id,
+                mine:true
+            },
+            headers:{
+                Authorization :`Bearer ${getState().auth.token}`,
+            }
+        })
+
+        dispatch({
+            type:SubscriptionStatus,
+            payload:data.items.length!==0,
+            
+        })
+        console.log(getState().auth.token)
+
+        
+    } 
+    catch(error) {
+        console.log(error.response.data);
+        
     }
 }

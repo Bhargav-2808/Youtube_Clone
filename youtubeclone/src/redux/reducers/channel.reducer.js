@@ -1,8 +1,9 @@
-import { ChannelDFail, ChannelDRequet, ChannelDSuccess } from "../actionTypes"
+import { ChannelDFail, ChannelDRequet, ChannelDSuccess, SubscriptionStatus } from "../actionTypes"
 
 export const ChannelDetailReducer = (prestate = {
     loading:true,
-    channel:{}
+    channel:{},
+    SubscriptionStatus_:false
 },action) =>{
 const {type , payload} = action
 
@@ -25,6 +26,11 @@ const {type , payload} = action
                 channel:null,
                 error:payload,
                 loading:true,
+            }
+        case SubscriptionStatus:
+            return{
+                ...prestate,
+                SubscriptionStatus_:payload
             }
         default:
             return prestate
