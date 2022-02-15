@@ -16,3 +16,5 @@ export const SeletedVFail= "SeletedVFail"
 export const ChannelDRequet = "ChannelDRequet"
 export const ChannelDSuccess = "ChannelDSuccess"
 export const ChannelDFail= "ChannelDFail"
+
+export const SubscriptionStatus= "SubscriptionStatus"
