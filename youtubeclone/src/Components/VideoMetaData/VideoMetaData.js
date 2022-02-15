@@ -1,4 +1,4 @@
-import React from "react";
+
 import React, { useEffect } from "react";
 import moment from "moment";
 import numeral from "numeral";
@@ -38,11 +38,11 @@ const VideoMetaData = ({ video: { snippet, statistics }, videoId }) => {
           />
           <div className="d-flex flex-column">
             <span>{channelTitle}</span>
-            <span>{numeral().format("0.a")} Subscribers</span>
+           
             <span>{numeral(channelStatistics?.subscriberCount).format("0.a")} Subscribers</span>
           </div>
         </div>
-        <button className="btn border-0 p-2 m-2">Subscribe</button>
+      
         <button className={`btn border-0 p-2 m-2 ${subrcStatus ? 'btn-gray': ''}`}>{subrcStatus?"Subscribed":"Subscribe"}</button>
       </div>
       <div className="videoMetaData__description">
