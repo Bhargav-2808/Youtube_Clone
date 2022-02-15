@@ -5,20 +5,14 @@ import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import ThumbDownIcon from "@mui/icons-material/ThumbDown";
 import ReactShowMoreText from "react-show-more-text";
 import "./VideoMetaData.scss";
-<<<<<<< HEAD
 import { useDispatch, useSelector } from "react-redux";
 import { getChannelDetails, subscrition } from "../../redux/actions/channel.action";
-=======
-import { useDispatch,useSelector } from "react-redux";
-import { getChannelDetails,checkSubscription } from "../../redux/actions/channel.action";
->>>>>>> f5bd7205aef44c493986e41eb295d1f53add9526
 
 const VideoMetaData = ({ video: { snippet, statistics }, videoId }) => {
   const { channelId, channelTitle, description, title, publishedAt } = snippet;
   const { viewCount, likeCount, dislikeCount } = statistics;
   const dispatch = useDispatch();
 
-<<<<<<< HEAD
   const { 
     snippet: channelSnippet,
     statistics: channelStatistics,
@@ -31,18 +25,6 @@ const VideoMetaData = ({ video: { snippet, statistics }, videoId }) => {
     dispatch(getChannelDetails(channelId));
     dispatch(subscrition(channelId))
   }, [dispatch, channelId]);
-=======
-  const {snippet:channelSnippet,statistics:channelStatistics} = useSelector(state=>state.channelDetails.channel);
-  const {subrcStatus}=useSelector(state=>state.channelDetails)
-
-  console.log(subrcStatus);
-
-  useEffect(()=>{
-    dispatch(getChannelDetails(channelId))
-    dispatch(checkSubscription(channelId))
-  },[dispatch,channelId])
-
->>>>>>> f5bd7205aef44c493986e41eb295d1f53add9526
 
   //console.log(channelStatistics?.subscriberCount);
   return (
@@ -75,7 +57,6 @@ const VideoMetaData = ({ video: { snippet, statistics }, videoId }) => {
           />
           <div className="d-flex flex-column">
             <span>{channelTitle}</span>
-<<<<<<< HEAD
             <span>
               {numeral(channelStatistics?.subscriberCount).format("0.a")} Subscribers
             </span>
@@ -84,12 +65,6 @@ const VideoMetaData = ({ video: { snippet, statistics }, videoId }) => {
         <button className={`p-2 m-2 border-0 btn ${
                   SubscriptionStatus_ && 'btn-gray'
                }`}>{SubscriptionStatus_?"Subscribed":"Subscribe"}</button>
-=======
-            <span>{numeral(channelStatistics?.subscriberCount).format("0.a")} Subscribers</span>
-          </div>
-        </div>
-        <button className={`btn border-0 p-2 m-2 ${subrcStatus ? 'btn-gray': ''}`}>{subrcStatus?"Subscribed":"Subscribe"}</button>
->>>>>>> f5bd7205aef44c493986e41eb295d1f53add9526
       </div>
       <div className="videoMetaData__description">
         <ReactShowMoreText
