@@ -1,6 +1,6 @@
 
 import request from "../../api"
-import { HomeVRequest,HomeVSucess ,HomeVFail, SeletedVRequest, SeletedVSuccess, SeletedVFail, RelatedVRequst, RelatedVSuccess, RelatedVFail} from "../actionTypes"
+import { HomeVRequest,HomeVSucess ,HomeVFail, SeletedVRequest, SeletedVSuccess, SeletedVFail, RelatedVRequst, RelatedVSuccess, RelatedVFail, SearchVRequst, SearchVSuccess, SearchdVFail} from "../actionTypes"
 
 export const getPopVideos = () => async (dispatch,getState) =>{
     try {
@@ -98,3 +98,32 @@ export const getRVideo = (id) => async (dispatch)=>{
         })
     }
 }
+
+
+export const getVBySearch = keyword => async dispatch => {
+    try {
+       dispatch({
+          type: SearchVRequst,
+       })
+       const { data } = await request('/search', {
+          params: {
+             part: 'snippet',
+ 
+             maxResults: 20,
+             q: keyword,
+             type: 'video,channel',
+          },
+       })
+ 
+       dispatch({
+          type: SearchVSuccess,
+          payload: data.items,
+       })
+    } catch (error) {
+       console.log(error.message)
+       dispatch({
+          type: SearchdVFail,
+          payload: error.message,
+       })
+    }
+ }

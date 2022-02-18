@@ -1,4 +1,4 @@
-import { HomeVFail, HomeVRequest, HomeVSucess, RelatedVRequst, RelatedVSuccess, SeletedVFail, SeletedVRequest, SeletedVSuccess } from "../actionTypes";
+import { HomeVFail, HomeVRequest, HomeVSucess, RelatedVRequst, RelatedVSuccess, SearchdVFail, SearchVRequst, SearchVSuccess, SeletedVFail, SeletedVRequest, SeletedVSuccess } from "../actionTypes";
 
 const initialState={
     videos:[],
@@ -93,3 +93,36 @@ const {type , payload} = action
     }
 
 }
+
+export const searchedVReducer = (
+    state = {
+       loading: true,
+       videos: [],
+    },
+    action
+ ) => {
+    const { payload, type } = action
+ 
+    switch (type) {
+       case SearchVRequst:
+          return {
+             ...state,
+             loading: true,
+          }
+       case SearchVSuccess:
+          return {
+             ...state,
+             videos: payload,
+             loading: false,
+          }
+       case SearchdVFail:
+          return {
+             ...state,
+             loading: false,
+             error: payload,
+          }
+ 
+       default:
+          return state
+    }
+ }

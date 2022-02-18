@@ -5,11 +5,18 @@ import SearchIcon from '@mui/icons-material/Search';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import AppsIcon from '@mui/icons-material/Apps';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 export const Header = ({ handleToggleSidebar })=> {
+    const navigate = useNavigate();
     const {user}=useSelector(state=>state.auth);
     const {register ,handleSubmit} = useForm();
-    const onSubmit = data => console.log(data);
+    const onSubmit = data => {
+      //console.log(data?.search);
+       navigate(`/search/${data?.search}`);
+
+    }
+    
     
     
     return(

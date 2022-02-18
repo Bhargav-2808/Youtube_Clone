@@ -11,6 +11,7 @@ import History from "./Components/History/History";
 import Liked from "./Components/Liked/Liked";
 import HomeScreen from "./Screen/HomeScreen/HomeScreen";
 import { useSelector } from "react-redux";
+import SearchScreen from "./Screen/SearchScreen/SearchScreen";
 
 function App() {
  
@@ -41,6 +42,7 @@ function App() {
           <Route exact path="/history" element={<History />} />
           <Route exact path="/library" element={<Library />} />
           <Route exact path="/watch/:id" element={<WatchScreen />} />
+          <Route exact path="/search/:query" element={<SearchScreen />} />
         </Routes>
       </div>
     </>
