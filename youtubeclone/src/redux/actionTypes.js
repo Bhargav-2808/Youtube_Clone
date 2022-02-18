@@ -17,4 +17,12 @@ export const ChannelDRequet = "ChannelDRequet"
 export const ChannelDSuccess = "ChannelDSuccess"
 export const ChannelDFail= "ChannelDFail"
 
+export const CommmentRequest = "CommmentRequest"
+export const CommentSuccess = "CommentSuccess"
+export const CommentFail= "CommentFails"
+
+export const AddCommmentRequest = "AddCommmentRequest"
+export const AddCommentSuccess = "AddCommentSuccess"
+export const AddCommentFail= "AddCommentFails"
+
 export const SubscriptionStatus= "SubscriptionStatus"

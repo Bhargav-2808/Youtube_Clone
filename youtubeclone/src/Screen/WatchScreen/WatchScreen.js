@@ -28,7 +28,7 @@ const WatchScreen = () => {
               src={`https://www.youtube.com/embed/${id}`}
               width="100%"
               height="100%"
-              title={video?.snippt?.title}
+              title={video?.snippet?.title}
               frameBorder="0"
               allowFullScreen
             ></iframe>
@@ -37,7 +37,7 @@ const WatchScreen = () => {
      !loading ? <VideoMetaData  video={video} videoId={id}/>:<h1>Loading..</h1>
  }
           
-          <Comments />
+        <Comments videoId={id}/>
         </Col>
         <Col lg={4}>
           {[...Array(10)].map(() => {
