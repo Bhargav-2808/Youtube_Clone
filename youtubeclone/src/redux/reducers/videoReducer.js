@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 import { HomeVFail, HomeVRequest, HomeVSucess, RelatedVFail, RelatedVRequst, RelatedVSuccess, SeletedVFail, SeletedVRequest, SeletedVSuccess, SubscriptonChannelFail, SubscriptonChannelRequest, SubscriptonChannelSuccess } from "../actionTypes";
-=======
-import { HomeVFail, HomeVRequest, HomeVSucess, RelatedVRequst, RelatedVSuccess, SearchdVFail, SearchVRequst, SearchVSuccess, SeletedVFail, SeletedVRequest, SeletedVSuccess } from "../actionTypes";
->>>>>>> 93ec24dda8adc0156f69056c3ccd87ca9769f689
 
 const initialState={
     videos:[],
