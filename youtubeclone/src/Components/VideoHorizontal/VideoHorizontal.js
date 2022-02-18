@@ -55,7 +55,7 @@ const VideoHorizontal = ({ video, Search_screen,Subcription_Screen }) => {
         },
       });
 
-      setchannelIcon(items[0].snippet.thumbnails.default.url);
+      setchannelIcon(items[0].snippet.thumbnails.default);
     };
 
     getChannelIcon();
@@ -65,13 +65,9 @@ const VideoHorizontal = ({ video, Search_screen,Subcription_Screen }) => {
   const _duration = moment.utc(secs * 1000).format("mm:ss");
   const nav = useNavigate();
 
-  const _channelId = channelId
+  const _channelId = resourceId?.channelId || channelId
 
-<<<<<<< HEAD
-  const handleClick = () => {
-=======
-   const handleclick = () => {
->>>>>>> 3bfd21214abbb2f94298ed3bc51a4b243a41b48e
+  const handleclick = () => {
       isVideo
          ? nav(`/watch/${id.videoId}`)
          : nav(`/channel/${_channelId}`)
@@ -80,9 +76,9 @@ const VideoHorizontal = ({ video, Search_screen,Subcription_Screen }) => {
   return (
     <Row
       className="videoHorizontal m-1 py-2 align-items-center"
-      onClick={handleClick}
+      onClick={handleclick}
     >
-      <Col xs={6} md={Search_screen ? 4 : 6} className="videoHorizontal__left">
+      <Col xs={6} md={Search_screen || Subcription_Screen ? 4 : 6} className="videoHorizontal__left">
         <LazyLoadImage
           src={medium.url}
           effect="blur"
@@ -95,7 +91,7 @@ const VideoHorizontal = ({ video, Search_screen,Subcription_Screen }) => {
       </Col>
       <Col
         xs={6}
-        md={Search_screen ? 8 : 6}
+        md={Search_screen || Subcription_Screen? 8 : 6}
         className="videoHorizontal__right p-0"
       >
         <p className="videoHorizontal__title mb-1">{title}</p>
