@@ -18,7 +18,7 @@ const SubscriptionScreen = () => {
         <Container className="subsScreen">
             {!loading ? (
             videos?.map(video => (
-               <VideoHorizontal video={video} key={video.id} subScreen/>
+               <VideoHorizontal video={video} key={video.id} Subcription_Screen/>
             ))
             ) : (<h3>Loading....</h3>)}
         </Container>

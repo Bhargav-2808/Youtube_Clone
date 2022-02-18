@@ -8,7 +8,7 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 import { Col, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
-const VideoHorizontal = ({ video, Search_screen }) => {
+const VideoHorizontal = ({ video, Search_screen,Subcription_Screen }) => {
   const {
     id,
     snippet: {
@@ -21,7 +21,7 @@ const VideoHorizontal = ({ video, Search_screen }) => {
     },
   } = video;
 
-  const isVideo = !(id.kind === "youtube#channel");
+  const isVideo = !(id.kind === "youtube#channel" || Subcription_Screen);
   const [views, setViews] = useState(null);
   const [duration, setDuration] = useState(null);
   const [channelIcon, setchannelIcon] = useState(null);
@@ -40,8 +40,8 @@ const VideoHorizontal = ({ video, Search_screen }) => {
       setViews(items[0]?.statistics?.viewCount);
     };
 
-    getVideoDetails();
-  }, [id]);
+    if (isVideo) getVideoDetails();
+  }, [id,isVideo]);
 
   useEffect(() => {
     const getChannelIcon = async () => {
@@ -55,7 +55,6 @@ const VideoHorizontal = ({ video, Search_screen }) => {
       });
 
       setchannelIcon(items[0].snippet.thumbnails.default.url);
-      // console.log(items);
     };
 
     getChannelIcon();
@@ -96,7 +95,7 @@ const VideoHorizontal = ({ video, Search_screen }) => {
       >
         <p className="videoHorizontal__title mb-1">{title}</p>
 
-        {isvideo && (
+        {isVideo && (
           <div className="videoHorizontal__details">
             <RemoveRedEyeIcon fontSize="small" />
             {numeral(views).format("0.a")} Views •
@@ -104,11 +103,16 @@ const VideoHorizontal = ({ video, Search_screen }) => {
           </div>
         )}
 
-        {isVideo && <p className="mt-1">{description}</p>}
+        {(Subcription_Screen || Search_screen) && <p className="mt-1">{description}</p>}
         <div className="videoHorizontal__channel d-flex align-items-center my-1">
           {isVideo && <LazyLoadImage src={channelIcon?.url} effect="blur" />}
           <p className="mb-0"> {channelTitle}</p>
         </div>
+        {Subcription_Screen && (
+               <p className='mt-2'>
+                  {video.contentDetails.totalItemCount} Videos
+               </p>
+            )}
       </Col>
     </Row>
   );
