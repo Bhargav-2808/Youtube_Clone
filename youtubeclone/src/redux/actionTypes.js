@@ -36,3 +36,6 @@ export const RelatedVRequst = "RelatedVRequst"
 export const RelatedVSuccess= "RelatedVSuccess"
 export const RelatedVFail = "RelatedVFail"
 
+export const SearchVRequst = "SearchVRequst"
+export const SearchVSuccess= "SearchVSuccess"
+export const SearchdVFail = "SearchVFail"

@@ -1,6 +1,10 @@
 
 import request from "../../api"
+<<<<<<< HEAD
 import { HomeVRequest,HomeVSucess ,HomeVFail, SeletedVRequest, SeletedVSuccess, SeletedVFail, RelatedVRequst, RelatedVSuccess, RelatedVFail, SubscriptonChannelSuccess, SubscriptonChannelRequest, SubscriptonChannelFail} from "../actionTypes"
+=======
+import { HomeVRequest,HomeVSucess ,HomeVFail, SeletedVRequest, SeletedVSuccess, SeletedVFail, RelatedVRequst, RelatedVSuccess, RelatedVFail, SearchVRequst, SearchVSuccess, SearchdVFail} from "../actionTypes"
+>>>>>>> 93ec24dda8adc0156f69056c3ccd87ca9769f689
 
 export const getPopVideos = () => async (dispatch,getState) =>{
     try {
@@ -96,6 +100,7 @@ export const getRVideo = (id) => async (dispatch)=>{
     }
 }
 
+<<<<<<< HEAD
 export const getSubscriptionVideo = () => async (dispatch,getState)=>{
     try {
 
@@ -127,3 +132,33 @@ export const getSubscriptionVideo = () => async (dispatch,getState)=>{
         console.log(error.response.data);
     }
 }
+=======
+
+export const getVBySearch = keyword => async dispatch => {
+    try {
+       dispatch({
+          type: SearchVRequst,
+       })
+       const { data } = await request('/search', {
+          params: {
+             part: 'snippet',
+ 
+             maxResults: 20,
+             q: keyword,
+             type: 'video,channel',
+          },
+       })
+ 
+       dispatch({
+          type: SearchVSuccess,
+          payload: data.items,
+       })
+    } catch (error) {
+       console.log(error.message)
+       dispatch({
+          type: SearchdVFail,
+          payload: error.message,
+       })
+    }
+ }
+>>>>>>> 93ec24dda8adc0156f69056c3ccd87ca9769f689
