@@ -10,11 +10,9 @@ import History from "./Components/History/History";
 import Liked from "./Components/Liked/Liked";
 import HomeScreen from "./Screen/HomeScreen/HomeScreen";
 import { useSelector } from "react-redux";
-<<<<<<< HEAD
 import SubscriptionScreen from "./Screen/SubscriptionScreen/SubscriptionScreen";
-=======
 import SearchScreen from "./Screen/SearchScreen/SearchScreen";
->>>>>>> 93ec24dda8adc0156f69056c3ccd87ca9769f689
+
 
 function App() {
  
