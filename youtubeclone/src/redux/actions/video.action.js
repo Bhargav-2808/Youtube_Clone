@@ -1,10 +1,8 @@
 
 import request from "../../api"
-<<<<<<< HEAD
-import { HomeVRequest,HomeVSucess ,HomeVFail, SeletedVRequest, SeletedVSuccess, SeletedVFail, RelatedVRequst, RelatedVSuccess, RelatedVFail, SubscriptonChannelSuccess, SubscriptonChannelRequest, SubscriptonChannelFail} from "../actionTypes"
-=======
-import { HomeVRequest,HomeVSucess ,HomeVFail, SeletedVRequest, SeletedVSuccess, SeletedVFail, RelatedVRequst, RelatedVSuccess, RelatedVFail, SearchVRequst, SearchVSuccess, SearchdVFail} from "../actionTypes"
->>>>>>> 93ec24dda8adc0156f69056c3ccd87ca9769f689
+
+import { HomeVRequest,HomeVSucess ,HomeVFail, SeletedVRequest, SeletedVSuccess, SeletedVFail, RelatedVRequst, RelatedVSuccess, RelatedVFail, SearchVRequst, SearchVSuccess, SearchdVFail, SubscriptonChannelSuccess, SubscriptonChannelRequest, SubscriptonChannelFail} from "../actionTypes"
+
 
 export const getPopVideos = () => async (dispatch,getState) =>{
     try {
@@ -100,7 +98,7 @@ export const getRVideo = (id) => async (dispatch)=>{
     }
 }
 
-<<<<<<< HEAD
+
 export const getSubscriptionVideo = () => async (dispatch,getState)=>{
     try {
 
@@ -132,7 +130,7 @@ export const getSubscriptionVideo = () => async (dispatch,getState)=>{
         console.log(error.response.data);
     }
 }
-=======
+
 
 export const getVBySearch = keyword => async dispatch => {
     try {
@@ -161,4 +159,4 @@ export const getVBySearch = keyword => async dispatch => {
        })
     }
  }
->>>>>>> 93ec24dda8adc0156f69056c3ccd87ca9769f689
+

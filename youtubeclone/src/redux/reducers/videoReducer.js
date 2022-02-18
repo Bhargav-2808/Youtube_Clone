@@ -1,4 +1,4 @@
-import { HomeVFail, HomeVRequest, HomeVSucess, RelatedVFail, RelatedVRequst, RelatedVSuccess, SeletedVFail, SeletedVRequest, SeletedVSuccess, SubscriptonChannelFail, SubscriptonChannelRequest, SubscriptonChannelSuccess } from "../actionTypes";
+import { HomeVFail, HomeVRequest, HomeVSucess, RelatedVFail, RelatedVRequst, RelatedVSuccess, SearchdVFail, SearchVRequst, SearchVSuccess, SeletedVFail, SeletedVRequest, SeletedVSuccess, SubscriptonChannelFail, SubscriptonChannelRequest, SubscriptonChannelSuccess } from "../actionTypes";
 
 const initialState={
     videos:[],
