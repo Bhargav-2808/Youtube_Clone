@@ -6,11 +6,11 @@ import LoginScreen from "./Screen/LoginScreen/LoginScreen";
 import WatchScreen from "./Screen/WatchScreen/WatchScreen";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import Library from "./Components/Librarys/Library";
-import Subscription from "./Components/Subscription/Subscription";
 import History from "./Components/History/History";
 import Liked from "./Components/Liked/Liked";
 import HomeScreen from "./Screen/HomeScreen/HomeScreen";
 import { useSelector } from "react-redux";
+import SubscriptionScreen from "./Screen/SubscriptionScreen/SubscriptionScreen";
 
 function App() {
  
@@ -36,7 +36,7 @@ function App() {
 
         <Routes>
           <Route exact path="/" element={<HomeScreen/>} />
-          <Route exact path="/subscription" element={<Subscription />} />
+          <Route exact path="/subscription" element={<SubscriptionScreen />} />
           <Route exact path="/liked" element={<Liked />} />
           <Route exact path="/history" element={<History />} />
           <Route exact path="/library" element={<Library />} />

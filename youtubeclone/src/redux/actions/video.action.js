@@ -1,6 +1,6 @@
 
 import request from "../../api"
-import { HomeVRequest,HomeVSucess ,HomeVFail, SeletedVRequest, SeletedVSuccess, SeletedVFail, RelatedVRequst, RelatedVSuccess, RelatedVFail} from "../actionTypes"
+import { HomeVRequest,HomeVSucess ,HomeVFail, SeletedVRequest, SeletedVSuccess, SeletedVFail, RelatedVRequst, RelatedVSuccess, RelatedVFail, SubscriptonChannelSuccess, SubscriptonChannelRequest, SubscriptonChannelFail} from "../actionTypes"
 
 export const getPopVideos = () => async (dispatch,getState) =>{
     try {
@@ -18,8 +18,6 @@ export const getPopVideos = () => async (dispatch,getState) =>{
             },
         })
         const {data} = response;
-        //console.log(response);
-        //console.log(data);
         
         dispatch({
             type:HomeVSucess,
@@ -87,7 +85,6 @@ export const getRVideo = (id) => async (dispatch)=>{
             type:RelatedVSuccess,
             payload:data.items,
         })
-
         
     } 
     catch(error) {
@@ -96,5 +93,37 @@ export const getRVideo = (id) => async (dispatch)=>{
             type:RelatedVFail,
             payload:error.message,
         })
+    }
+}
+
+export const getSubscriptionVideo = () => async (dispatch,getState)=>{
+    try {
+
+        dispatch({
+            type:SubscriptonChannelRequest,
+        })
+
+        const {data} =await request('/subscriptions',{
+            params:{
+                part:"snippet,contentDetails",
+                mine:true,
+            },
+            headers:{
+                Authorization:`Bearer ${getState().auth.accessToken}`,
+            }
+        })
+
+        dispatch({
+            type:SubscriptonChannelSuccess,
+            payload:data.items,
+        })
+
+    } 
+    catch(error) {
+        dispatch({
+            type:SubscriptonChannelFail,
+            payload:error.response.data,
+        })
+        console.log(error.response.data);
     }
 }

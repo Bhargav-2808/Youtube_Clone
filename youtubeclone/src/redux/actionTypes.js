@@ -26,6 +26,10 @@ export const AddCommmentRequest = "AddCommmentRequest"
 export const AddCommentSuccess = "AddCommentSuccess"
 export const AddCommentFail= "AddCommentFails"
 
+export const  SubscriptonChannelRequest = "SubscriptonChannelRequest"
+export const SubscriptonChannelSuccess =  "SubscriptonChannelSuccess"
+export const SubscriptonChannelFail=  "SubscriptonChannelFails"
+
 export const SubscriptionStatus= "SubscriptionStatus"
 
 export const RelatedVRequst = "RelatedVRequst"

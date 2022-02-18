@@ -1,4 +1,4 @@
-import { HomeVFail, HomeVRequest, HomeVSucess, RelatedVRequst, RelatedVSuccess, SeletedVFail, SeletedVRequest, SeletedVSuccess } from "../actionTypes";
+import { HomeVFail, HomeVRequest, HomeVSucess, RelatedVFail, RelatedVRequst, RelatedVSuccess, SeletedVFail, SeletedVRequest, SeletedVSuccess, SubscriptonChannelFail, SubscriptonChannelRequest, SubscriptonChannelSuccess } from "../actionTypes";
 
 const initialState={
     videos:[],
@@ -82,7 +82,38 @@ const {type , payload} = action
                 videos:payload,
                 loading:false,
             }
-        case RelatedVSuccess:
+        case RelatedVFail:
+            return{
+                ...prestate,
+                error:payload,
+                loading:true,
+            }
+        default:
+            return prestate
+    }
+
+}
+
+export const subscriptionChannelReducer = (prestate = {
+    loading:true,
+    videos:[]
+},action) =>{
+const {type , payload} = action
+
+    switch(type)
+    {
+        case SubscriptonChannelRequest:
+            return{
+                ...prestate,
+                loading:true,
+            }
+        case SubscriptonChannelSuccess:
+            return{
+                ...prestate,
+                videos:payload,
+                loading:false,
+            }
+        case SubscriptonChannelFail:
             return{
                 ...prestate,
                 error:payload,
