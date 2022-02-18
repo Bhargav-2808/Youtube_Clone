@@ -22,7 +22,7 @@ export const getChannelDetails = (id) => async (dispatch)=>{
         
     } 
     catch(error) {
-        console.log(error.response.data);
+        //console.log(error.response.data);
         dispatch({
             type:ChannelDFail,
             payload:error.response.data,
@@ -49,7 +49,7 @@ export const checkSubscription = (id) => async (dispatch,getState)=>{
             type:SubscriptionStatus,
             payload:data.items.length !== 0,
         })
-        console.log(data.items.length);
+        //console.log(data.items.length);
 
     } 
     catch(error) {

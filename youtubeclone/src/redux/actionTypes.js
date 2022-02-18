@@ -18,3 +18,7 @@ export const ChannelDSuccess = "ChannelDSuccess"
 export const ChannelDFail= "ChannelDFail"
 
 export const SubscriptionStatus= "SubscriptionStatus"
+
+export const RelatedVRequst = "RelatedVRequst"
+export const RelatedVSuccess= "RelatedVSuccess"
+export const RelatedVFail = "RelatedVFail"
