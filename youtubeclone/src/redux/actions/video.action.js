@@ -1,6 +1,10 @@
 
 import request from "../../api"
+<<<<<<< HEAD
+import { HomeVRequest,HomeVSucess ,HomeVFail, SeletedVRequest, SeletedVSuccess, SeletedVFail, RelatedVRequst, RelatedVSuccess, RelatedVFail, SubscriptonChannelSuccess, SubscriptonChannelRequest, SubscriptonChannelFail} from "../actionTypes"
+=======
 import { HomeVRequest,HomeVSucess ,HomeVFail, SeletedVRequest, SeletedVSuccess, SeletedVFail, RelatedVRequst, RelatedVSuccess, RelatedVFail, SearchVRequst, SearchVSuccess, SearchdVFail} from "../actionTypes"
+>>>>>>> 93ec24dda8adc0156f69056c3ccd87ca9769f689
 
 export const getPopVideos = () => async (dispatch,getState) =>{
     try {
@@ -18,8 +22,6 @@ export const getPopVideos = () => async (dispatch,getState) =>{
             },
         })
         const {data} = response;
-        //console.log(response);
-        //console.log(data);
         
         dispatch({
             type:HomeVSucess,
@@ -87,7 +89,6 @@ export const getRVideo = (id) => async (dispatch)=>{
             type:RelatedVSuccess,
             payload:data.items,
         })
-
         
     } 
     catch(error) {
@@ -99,6 +100,39 @@ export const getRVideo = (id) => async (dispatch)=>{
     }
 }
 
+<<<<<<< HEAD
+export const getSubscriptionVideo = () => async (dispatch,getState)=>{
+    try {
+
+        dispatch({
+            type:SubscriptonChannelRequest,
+        })
+
+        const {data} =await request('/subscriptions',{
+            params:{
+                part:"snippet,contentDetails",
+                mine:true,
+            },
+            headers:{
+                Authorization:`Bearer ${getState().auth.accessToken}`,
+            }
+        })
+
+        dispatch({
+            type:SubscriptonChannelSuccess,
+            payload:data.items,
+        })
+
+    } 
+    catch(error) {
+        dispatch({
+            type:SubscriptonChannelFail,
+            payload:error.response.data,
+        })
+        console.log(error.response.data);
+    }
+}
+=======
 
 export const getVBySearch = keyword => async dispatch => {
     try {
@@ -127,3 +161,4 @@ export const getVBySearch = keyword => async dispatch => {
        })
     }
  }
+>>>>>>> 93ec24dda8adc0156f69056c3ccd87ca9769f689
