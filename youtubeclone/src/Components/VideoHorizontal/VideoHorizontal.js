@@ -65,9 +65,13 @@ const VideoHorizontal = ({ video, Search_screen,Subcription_Screen }) => {
   const _duration = moment.utc(secs * 1000).format("mm:ss");
   const nav = useNavigate();
 
-  const _channelId = resourceId?.channelId || channelId
+  const _channelId = channelId
 
+<<<<<<< HEAD
   const handleClick = () => {
+=======
+   const handleclick = () => {
+>>>>>>> 3bfd21214abbb2f94298ed3bc51a4b243a41b48e
       isVideo
          ? nav(`/watch/${id.videoId}`)
          : nav(`/channel/${_channelId}`)
@@ -104,7 +108,7 @@ const VideoHorizontal = ({ video, Search_screen,Subcription_Screen }) => {
           </div>
         )}
 
-        {(Subcription_Screen || Search_screen) && <p className="mt-1">{description}</p>}
+        {(Subcription_Screen || Search_screen) && <p className="mt-1 videoHorizontal__desc">{description}</p>}
         <div className="videoHorizontal__channel d-flex align-items-center my-1">
           {isVideo && <LazyLoadImage src={channelIcon?.url} effect="blur" />}
           <p className="mb-0"> {channelTitle}</p>
