@@ -1,4 +1,4 @@
-import { HomeVFail, HomeVRequest, HomeVSucess, SeletedVFail, SeletedVRequest, SeletedVSuccess } from "../actionTypes";
+import { HomeVFail, HomeVRequest, HomeVSucess, RelatedVRequst, RelatedVSuccess, SeletedVFail, SeletedVRequest, SeletedVSuccess } from "../actionTypes";
 
 const initialState={
     videos:[],
@@ -54,6 +54,37 @@ const {type , payload} = action
             return{
                 ...prestate,
                 video:null,
+                error:payload,
+                loading:true,
+            }
+        default:
+            return prestate
+    }
+
+}
+
+export const relatedVReducer = (prestate = {
+    loading:true,
+    videos:[]
+},action) =>{
+const {type , payload} = action
+
+    switch(type)
+    {
+        case RelatedVRequst:
+            return{
+                ...prestate,
+                loading:true,
+            }
+        case RelatedVSuccess:
+            return{
+                ...prestate,
+                videos:payload,
+                loading:false,
+            }
+        case RelatedVSuccess:
+            return{
+                ...prestate,
                 error:payload,
                 loading:true,
             }

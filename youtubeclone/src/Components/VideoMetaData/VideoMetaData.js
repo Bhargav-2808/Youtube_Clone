@@ -17,7 +17,7 @@ const VideoMetaData = ({ video: { snippet, statistics }, videoId }) => {
   const { snippet: channelSnippet, statistics: channelStatistics } = useSelector(state => state.channelDetails.channel);
   const { subrcStatus } = useSelector(state => state.channelDetails)
 
-  useEffect(() => {
+  useEffect(()=>{
     dispatch(getChannelDetails(channelId))
     dispatch(checkSubscription(channelId))
   }, [dispatch, channelId])

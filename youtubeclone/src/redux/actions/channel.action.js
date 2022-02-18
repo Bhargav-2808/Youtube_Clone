@@ -22,7 +22,7 @@ export const getChannelDetails = (id) => async (dispatch)=>{
         
     } 
     catch(error) {
-        console.log(error.response.data);
+        //console.log(error.response.data);
         dispatch({
             type:ChannelDFail,
             payload:error.response.data,
