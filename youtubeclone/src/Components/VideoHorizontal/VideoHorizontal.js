@@ -18,6 +18,7 @@ const VideoHorizontal = ({ video, Search_screen,Subcription_Screen }) => {
       publishedAt,
       channelTitle,
       thumbnails: { medium },
+      resourceId
     },
   } = video;
 
@@ -66,7 +67,7 @@ const VideoHorizontal = ({ video, Search_screen,Subcription_Screen }) => {
 
   const _channelId = resourceId?.channelId || channelId
 
-   const handleClick = () => {
+  const handleClick = () => {
       isVideo
          ? nav(`/watch/${id.videoId}`)
          : nav(`/channel/${_channelId}`)
@@ -75,7 +76,7 @@ const VideoHorizontal = ({ video, Search_screen,Subcription_Screen }) => {
   return (
     <Row
       className="videoHorizontal m-1 py-2 align-items-center"
-      onClick={handleclick}
+      onClick={handleClick}
     >
       <Col xs={6} md={Search_screen ? 4 : 6} className="videoHorizontal__left">
         <LazyLoadImage
