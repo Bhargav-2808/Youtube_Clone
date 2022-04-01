@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getVBySearch } from "../../redux/actions/video.action";
 import { Container ,Row,Col} from "react-bootstrap";
-import VideoHorizontal from "../../Components/VideoHorizontal/VideoHorizontal";
+import SearchVideo from "../../Components/SearchVideo/SearchVideo";
 
 function SearchScreen() {
   const query = useParams();
@@ -17,12 +17,12 @@ function SearchScreen() {
   const { videos, loading } = useSelector((state) => state.searchVideo);
   return (
     <>
-      <Container>
+      <Container style={{marginTop:"10vh"}}>
         <Row>
           {!loading ? (
-            videos.map((video) => (
-              <Col>
-                <VideoHorizontal video={video} key={video.id.videoId} Search_screen/>
+            videos.map((video,index) => (
+              <Col lg={3} md={4} key={index}>
+                <SearchVideo video={video} key={video.id.videoId} />
               </Col>
             ))
           ) : (

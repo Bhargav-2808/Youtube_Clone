@@ -1,12 +1,11 @@
-import { useEffect,useState } from "react";
-import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
+import { useEffect, useState } from "react";
+import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import request from "../../api";
 import "./Videopart.scss";
 import moment from "moment";
 import numeral from "numeral";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { Navigate, useNavigate } from "react-router-dom";
-
 
 export const Videopart = ({ video }) => {
   const {
@@ -15,33 +14,31 @@ export const Videopart = ({ video }) => {
       channelId,
       channelTitle,
       publishedAt,
-      localized:{
-         title
-      },
+      localized: { title },
       thumbnails: { medium },
     },
   } = video;
-  
+
   const [views, setViews] = useState(null);
   const [duration, setDuration] = useState(null);
   const [channelIcon, setchannelIcon] = useState(null);
 
-  const secs=moment.duration(duration).asSeconds()  
-  const _duration=moment.utc(secs*1000).format("mm:ss")
+  const secs = moment.duration(duration).asSeconds();
+  const _duration = moment.utc(secs * 1000).format("mm:ss");
   const naviagate = useNavigate();
- // const _videoId = id?.videoId || id
+  // const _videoId = id?.videoId || id
   useEffect(() => {
     const getVideoDetails = async () => {
       const {
-        data:{items}
+        data: { items },
       } = await request("/videos", {
         params: {
           part: "contentDetails,statistics",
           id: id,
         },
       });
-      setDuration(items[0].contentDetails.duration)
-      setViews(items[0].statistics.viewCount)
+      setDuration(items[0].contentDetails.duration);
+      setViews(items[0].statistics.viewCount);
     };
 
     getVideoDetails();
@@ -50,43 +47,43 @@ export const Videopart = ({ video }) => {
   useEffect(() => {
     const getChannelIcon = async () => {
       const {
-        data:{items}
+        data: { items },
       } = await request("/channels", {
         params: {
           part: "snippet",
           id: channelId,
         },
       });
-      
-      setchannelIcon(items[0].snippet.thumbnails.default.url)
-     // console.log(items);
+
+      setchannelIcon(items[0].snippet.thumbnails.default.url);
+      // console.log(items);
     };
 
     getChannelIcon();
   }, [channelId]);
 
-
-  const handleVideoClick = () =>{
-      naviagate(`/watch/${id}`);
-  }
+  const handleVideoClick = () => {
+    naviagate(`/watch/${id}`);
+  };
   return (
     <>
       <div className="video" onClick={handleVideoClick}>
         <div className="video__top">
-         <LazyLoadImage src={medium.url} effect="blur"/>
+          <LazyLoadImage src={medium.url} effect="blur" />
           {/* <img src={medium.url} alt="" /> */}
-          <span className='video__top__duration'>{_duration}</span>
+          <span className="video__top__duration">{_duration}</span>
         </div>
-        <div className="video__title">
-          {title}
-        </div>
+        <div className="video__title">{title}</div>
         <div className="video__details">
-          <span><RemoveRedEyeIcon fontSize="small"/>{numeral(views).format('0.a')} Views •</span>
+          <span>
+            <RemoveRedEyeIcon fontSize="small" />
+            {numeral(views).format("0.a")} Views •
+          </span>
           <span>{moment(publishedAt).fromNow()}</span>
         </div>
         <div className="video__channel">
-        <LazyLoadImage src={channelIcon} effect="blur"/>
-        {/* <img src={channelIcon}/> */}
+          <LazyLoadImage src={channelIcon} effect="blur" />
+          {/* <img src={channelIcon}/> */}
           <p>{channelTitle}</p>
         </div>
       </div>
